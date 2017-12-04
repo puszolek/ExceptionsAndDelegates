@@ -61,10 +61,15 @@ namespace ExceptionsAndDelegates
 
         private void btnGo_Click(object sender, EventArgs e)
         {
+            try
+            {
+                RestOfTheProgram.FunctionWith1Param(operation1, Double.Parse(textBoxDef1.Text));
+                RestOfTheProgram.FunctionWith2Params(operation2, Double.Parse(textBoxDef1.Text), Double.Parse(textBoxDef2.Text));
+            }
+            catch (Exception ex)
+            {
 
-            RestOfTheProgram.ShowResult(result);
-            RestOfTheProgram.FunctionWith1Param(operation1, Double.Parse(textBoxDef1.Text));
-            RestOfTheProgram.FunctionWith2Params(operation2, Double.Parse(textBoxDef1.Text), Double.Parse(textBoxDef2.Text));
+            }
 
             //string result0 = "Result: 0";
             //result(result0);
@@ -100,27 +105,27 @@ namespace ExceptionsAndDelegates
 
         private void comboBoxDef_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(comboBoxDef.SelectedText == "sqrt")
+            if(comboBoxDef.Text == "sqrt")
             {
                 operation1 = (x) => Math.Sqrt(x);
             }
-            else if (comboBoxDef.SelectedText == "factorial")
+            else if (comboBoxDef.Text == "factorial")
             {
-                operation1 = x => x <= 1 ? 1 : x * operation1(x - 1);
+                operation1 = (x) => x <= 1 ? 1 : x * operation1(x - 1);
             }
-            else if (comboBoxDef.SelectedText == "+")
+            else if (comboBoxDef.Text == "+")
             {
                 operation2 = (x, y) => x+y;
             }
-            else if (comboBoxDef.SelectedText == "-")
+            else if (comboBoxDef.Text == "-")
             {
                 operation2 = (x, y) => x - y;
             }
-            else if (comboBoxDef.SelectedText == "/")
+            else if (comboBoxDef.Text == "/")
             {
                 operation2 = (x, y) => x / y;
             }
-            else if (comboBoxDef.SelectedText == "*")
+            else if (comboBoxDef.Text == "*")
             {
                 operation2 = (x, y) => x * y;
             }
